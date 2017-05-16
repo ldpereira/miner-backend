@@ -1,82 +1,58 @@
 package com.miner.minerws.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author ldpereira
  */
 @XmlRootElement
-@XmlType(propOrder = {"key", "text", "nodeRight", "labelRight", "nodeLeft", "labelLeft"})
+@XmlType(propOrder = {"key", "text", "label", "nodes"})
 public class Node {
     
     private final String key;
     private String text;
-    private String labelRight;
-    private String labelLeft;
-    private Node nodeRight;
-    private Node nodeLeft;
+    private String label;
+    private List<Node> nodes;
     
     public Node() {
         this.text = "";
         this.key = "";
-        this.labelLeft = "";
-        this.labelRight = "";
+        this.label = "";
+        this.nodes = new ArrayList<Node>();
     }
     
     public Node(String key, String text) {
         this.key = key;
         this.text = text;
-        this.labelLeft = "";
-        this.labelRight = "";
+        this.label = "";
+        this.nodes = new ArrayList<Node>();
     }
     
-    public void setNodeRight(Node node) {
-        this.nodeRight = node;
-    }
-    
-    public void setNodeLeft(Node node) {
-        this.nodeLeft = node;
-    }
-    
-    public void setLabelLeft(String label) {
-        this.labelLeft = label;
-    }
-    
-    public void setLabelRight(String label) {
-        this.labelRight = label;
+    public void addNode(Node node) {
+        nodes.add(node);
     }
     
     public void setText(String text) {
         this.text = text;
     }
     
-    @XmlElement
-    public Node getNodeRight() {
-        return this.nodeRight;
+    public void setLabel(String label) {
+        this.label = label;
     }
     
     @XmlElement
-    public Node getNodeLeft() {
-        return this.nodeLeft;
+    public List<Node> getNodes() {
+        return this.nodes;
     }
     
     @XmlElement
-    public String getLabelLeft() {
-        return this.labelLeft;
-    }
-    
-    @XmlElement
-    public String getLabelRight() {
-        return this.labelRight;
+    public String getLabel() {
+        return this.label;
     }
     
     @XmlElement

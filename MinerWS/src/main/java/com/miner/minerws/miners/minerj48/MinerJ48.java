@@ -50,7 +50,6 @@ public class MinerJ48 {
                         }
                     }
                 } else {
-                    //Arrumar para colocar a lista de nós, não só left right.
                     String[] nodeString = item.split("->");
                     Node nodeParent = nodes.get(nodeString[0].trim());
                     
@@ -66,13 +65,9 @@ public class MinerJ48 {
                         node = new Node(key, title);
                     }
                     
-                    if (nodeParent.getNodeLeft() == null) {
-                        nodeParent.setLabelLeft(title);
-                        nodeParent.setNodeLeft(node);
-                    } else {
-                        nodeParent.setLabelRight(title);
-                        nodeParent.setNodeRight(node);
-                    }
+                    node.setLabel(title);
+                    nodeParent.addNode(node);
+                    
                     nodes.put(node.getKey(), node);
                 }
             }
