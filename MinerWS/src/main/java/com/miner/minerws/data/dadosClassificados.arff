@@ -1,13 +1,13 @@
 @relation dados
 
-@attribute loja {SantanaShopping, PinheirosShopping}
-@attribute mes {Fevereiro, Marco}
-@attribute periodoDia {Manha, Tarde, Noite}
-@attribute fluxo {SemFluxo, FluxoBaixo, FluxoModerado, FluxoAlto}
-@attribute fluxoDaVitrine {VitrineNenhumMovimento, VitrineBaixo, VitrineMedio, VitrineAlto}
-@attribute temperatura {Frio, Normal, Quente}
-@attribute previsaoDoTempo {MuitaChuva,Chuva,Sol}
-@attribute atendimentos {Nenhum,1-5,6-10,11-14,15-19}
+@attribute Loja {SantanaShopping, PinheirosShopping}
+@attribute Mes {Fevereiro, Marco}
+@attribute PeriodoDia {Manha, Tarde, Noite}
+@attribute Fluxo {SemFluxo, FluxoBaixo, FluxoModerado, FluxoAlto}
+@attribute FluxoDaVitrine {VitrineNenhumMovimento, VitrineBaixo, VitrineMedio, VitrineAlto}
+@attribute Temperatura {Frio, Normal, Quente}
+@attribute PrevisaoDoTempo {MuitaChuva,Chuva,Sol}
+@attribute Atendimentos {Nenhum,1-5,6-10,11-14,15-19}
 
 @data
 SantanaShopping,Marco,Noite,FluxoModerado,VitrineAlto,Normal,Chuva,6-10

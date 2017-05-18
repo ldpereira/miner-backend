@@ -80,8 +80,6 @@ public class MinerJ48 {
         try {
             ConverterUtils.DataSource ds = new ConverterUtils.DataSource(new FileInputStream("C:/temp/dadosClassificados.arff"));
             Instances ins = ds.getDataSet();
-            File file = new File("C:/temp/dadosClassificados.arff");
-            file.getAbsolutePath();
             ins.setClassIndex(7);
 
             J48 j48 = new J48();
