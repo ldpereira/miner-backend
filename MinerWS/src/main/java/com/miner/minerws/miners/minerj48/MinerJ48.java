@@ -6,6 +6,7 @@
 package com.miner.minerws.miners.minerj48;
 
 import com.miner.minerws.model.Node;
+import java.io.File;
 import java.io.FileInputStream;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -25,12 +26,9 @@ public class MinerJ48 {
     public Node minerJ48(String file) {
         String retornoWeka;
 
-        if (file == null || file.trim().isEmpty()) {
-            retornoWeka = executeWekaJ48();
-        } else {
-            retornoWeka = executeWekaJ48("C:/temp/" + file);
-        }
-
+        ClassLoader classLoader = getClass().getClassLoader();
+        retornoWeka = executeWekaJ48(classLoader.getResource("data/dados_completos.arff").getFile());
+        
         System.out.println(retornoWeka);
         String[] list = retornoWeka.split("\n");
 
@@ -84,7 +82,7 @@ public class MinerJ48 {
 
     public static String executeWekaJ48() {
         try {
-            ConverterUtils.DataSource ds = new ConverterUtils.DataSource(new FileInputStream("C:/temp/dadosClassificados.arff"));
+            ConverterUtils.DataSource ds = new ConverterUtils.DataSource(new FileInputStream("C:/temp/dados_completos.arff"));
             Instances ins = ds.getDataSet();
             ins.setClassIndex(7);
 
