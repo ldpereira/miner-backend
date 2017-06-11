@@ -6,6 +6,7 @@ This is a Rest Web Service, to receive requests from www.github.com/ldpereira/mi
 <br>
 WEKA is a tool for data miner, developed to Machine Learning Group at the University of Waikato.
 http://www.cs.waikato.ac.nz/ml/weka/
-<br>
+<br></br>
 <b>Lucas Dalcol Pereira</b>
+<br></br>
 <i>ldpereira@icloud.com</i>
