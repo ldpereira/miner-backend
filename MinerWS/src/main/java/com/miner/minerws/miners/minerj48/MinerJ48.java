@@ -6,7 +6,6 @@
 package com.miner.minerws.miners.minerj48;
 
 import com.miner.minerws.model.Node;
-import java.io.File;
 import java.io.FileInputStream;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -93,7 +92,7 @@ public class MinerJ48 {
             Instance novo = new DenseInstance(7);
             //vincula o arquivo e os dados
             novo.setDataset(ins);
-            novo.setValue(0, "SantanaShopping");
+            novo.setValue(0, "ShoppingA");
             novo.setValue(1, "Fevereiro");
             novo.setValue(2, "Tarde");
             novo.setValue(3, "FluxoModerado");
@@ -101,7 +100,7 @@ public class MinerJ48 {
             novo.setValue(5, "Normal");
             novo.setValue(6, "MuitaChuva");
 
-            //gerar a previsao do campo gasta_muito
+            //gerar a previsao
             double retorno = j48.classifyInstance(novo);
             System.out.println("retorno: " + retorno);
             String graph = ((Drawable) j48).graph();
@@ -127,7 +126,7 @@ public class MinerJ48 {
             Instance novo = new DenseInstance(8);
             //vincula o arquivo e os dados
             novo.setDataset(ins);
-            novo.setValue(0, "SantanaShopping");
+            novo.setValue(0, "ShoppingA");
             novo.setValue(1, "quarta-feira");
             novo.setValue(2, "Fevereiro");
             novo.setValue(3, "Tarde");
@@ -179,11 +178,11 @@ public class MinerJ48 {
         } else if ("= Quente".equals(text)) {
             textChanged = "= Quente (24,1ºC a 27ºC)";
         } else if ("= MuitoQuente".equals(text)) {
-            textChanged = "= Muito quente (27.1ºC a 34ºC)";
-        } else if ("= SantanaShopping".equals(text)) {
-            textChanged = "= Shopping Santana";
-        } else if ("= PinheirosShopping".equals(text)) {
-            textChanged = "= Shopping Pinheiros";
+            textChanged = "= Muito quente (27,1ºC a 34ºC)";
+        } else if ("= ShoppingA".equals(text)) {
+            textChanged = "= Shopping A";
+        } else if ("= ShoppingB".equals(text)) {
+            textChanged = "= Shopping B";
         } else if ("= SemChuva".equals(text)) {
             textChanged = "= Ensolarado (0mm)";
         } else if ("= PoucaChuva".equals(text)) {
