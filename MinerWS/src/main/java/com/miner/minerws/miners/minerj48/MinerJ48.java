@@ -136,7 +136,6 @@ public class MinerJ48 {
             novo.setValue(6, "Morno");
             novo.setValue(7, "PoucaChuva");
 
-            //gerar a previsao do campo gasta_muito
             double retorno = j48.classifyInstance(novo);
             System.out.println("retorno: " + retorno);
             String graph = ((Drawable) j48).graph();
@@ -241,14 +240,14 @@ public class MinerJ48 {
 
                     decimalFormat = new DecimalFormat("#.0");
 
-                    titleChanged = String.format("Extimativa de atendimento: sem atendimento, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de acertividade baseado em "
                             + "registros na base de conhecimento.",
                             acertividadeString, decimalFormat.format(vlPositivo + vlNegativo));
                 } else {
                     String vlInferior = title.substring(0, title.indexOf("-"));
                     String vlSuperior = title.substring(title.indexOf("-")+1, title.indexOf("Atend"));
 
-                    titleChanged = String.format("Extimativa de atendimento: de %s à %s, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: de %s à %s, %s de acertividade baseado em "
                             + "%s registros na base de conhecimento.",
                             vlInferior, vlSuperior, acertividadeString, decimalFormat.format((vlPositivo + vlNegativo)));
                 }
@@ -261,13 +260,13 @@ public class MinerJ48 {
                 if (title.startsWith("SemAtendimento")) {
                     decimalFormat = new DecimalFormat("#.0");
 
-                    titleChanged = String.format("Extimativa de atendimento: sem atendimento, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de acertividade baseado em "
                             + "%s registros na base de conhecimento.",
                             "100%", decimalFormat.format(vlPositivo));
                 } else if (title.startsWith("19Atendimentos")) {
                     decimalFormat = new DecimalFormat("#.0");
 
-                    titleChanged = String.format("Extimativa de atendimento: 19 atendimentos, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: 19 atendimentos, %s de acertividade baseado em "
                             + "%s registros na base de conhecimento.",
                             "100%", decimalFormat.format(vlPositivo));
                 } else {
@@ -275,7 +274,7 @@ public class MinerJ48 {
                     String vlInferior = title.substring(0, title.indexOf("-"));
                     String vlSuperior = title.substring(title.indexOf("-")+1, title.indexOf("Atend"));
 
-                    titleChanged = "Extimativa de atendimento: de " + vlInferior + " à " + vlSuperior
+                    titleChanged = "Estimativa de atendimento: de " + vlInferior + " à " + vlSuperior
                             + ", 100% de acertividade baseado em "
                             + vlPositivo + " registros na base de conhecimento.";
                 }
