@@ -230,8 +230,9 @@ public class MinerJ48 {
                 String[] valores = title.substring(title.indexOf("(") + 1, title.indexOf(")")).split("/");
                 double vlPositivo = Double.valueOf(valores[0]);
                 double vlNegativo = Double.valueOf(valores[1]);
-
-                Double acertividade = (100 - ((vlNegativo * 100) / vlPositivo));
+                
+                double total = vlPositivo + vlNegativo;
+                Double acertividade = (vlPositivo*100)/total;
                 DecimalFormat decimalFormat = new DecimalFormat("#.00");
                 String acertividadeString = decimalFormat.format(acertividade) + "%";
 
@@ -240,8 +241,8 @@ public class MinerJ48 {
                     decimalFormat = new DecimalFormat("#.0");
 
                     titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de acertividade baseado em "
-                            + "registros na base de conhecimento.",
-                            acertividadeString, decimalFormat.format(vlPositivo + vlNegativo));
+                            + "%s registros na base de conhecimento.",
+                            acertividadeString, decimalFormat.format(total));
                 } else {
                     String vlInferior = title.substring(0, title.indexOf("-"));
                     String vlSuperior = title.substring(title.indexOf("-")+1, title.indexOf("Atend"));
