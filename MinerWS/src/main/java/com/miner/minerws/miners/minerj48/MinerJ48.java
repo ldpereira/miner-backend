@@ -254,16 +254,14 @@ public class MinerJ48 {
                 String valor = title.substring(title.indexOf("(") + 1, title.indexOf(")"));
                 double vlPositivo = Double.valueOf(valor);
 
-                DecimalFormat decimalFormat = new DecimalFormat("#.00");
-
                 if (title.startsWith("SemAtendimento")) {
-                    decimalFormat = new DecimalFormat("#.0");
+                    DecimalFormat decimalFormat = new DecimalFormat("#.0");
 
                     titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de acertividade baseado em "
                             + "%s registros na base de conhecimento.",
                             "100%", decimalFormat.format(vlPositivo));
                 } else if (title.startsWith("19Atendimentos")) {
-                    decimalFormat = new DecimalFormat("#.0");
+                    DecimalFormat decimalFormat = new DecimalFormat("#.0");
 
                     titleChanged = String.format("Estimativa de atendimento: 19 atendimentos, %s de acertividade baseado em "
                             + "%s registros na base de conhecimento.",
