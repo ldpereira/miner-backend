@@ -75,7 +75,7 @@ public class MinerJ48 {
                 }
             }
         }
-
+        System.out.println("###\n\nNúmero de nós gerados: " + nodes.size() + "\n\n\n####");
         return root;
     }
 
@@ -232,24 +232,24 @@ public class MinerJ48 {
                 double vlNegativo = Double.valueOf(valores[1]);
                 
                 double total = vlPositivo + vlNegativo;
-                Double acertividade = (vlPositivo*100)/total;
+                Double assertividade = (vlPositivo*100)/total;
                 DecimalFormat decimalFormat = new DecimalFormat("#.00");
-                String acertividadeString = decimalFormat.format(acertividade) + "%";
+                String assertividadeString = decimalFormat.format(assertividade) + "%";
 
                 if (title.startsWith("SemAtendimento")) {
 
                     decimalFormat = new DecimalFormat("#.0");
 
-                    titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de assertividade baseado em "
                             + "%s registros na base de conhecimento.",
-                            acertividadeString, decimalFormat.format(total));
+                            assertividadeString, decimalFormat.format(total));
                 } else {
                     String vlInferior = title.substring(0, title.indexOf("-"));
                     String vlSuperior = title.substring(title.indexOf("-")+1, title.indexOf("Atend"));
 
-                    titleChanged = String.format("Estimativa de atendimento: de %s à %s, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: de %s à %s, %s de assertividade baseado em "
                             + "%s registros na base de conhecimento.",
-                            vlInferior, vlSuperior, acertividadeString, decimalFormat.format((vlPositivo + vlNegativo)));
+                            vlInferior, vlSuperior, assertividadeString, decimalFormat.format((vlPositivo + vlNegativo)));
                 }
             } else {
                 String valor = title.substring(title.indexOf("(") + 1, title.indexOf(")"));
@@ -258,13 +258,13 @@ public class MinerJ48 {
                 if (title.startsWith("SemAtendimento")) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.0");
 
-                    titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: sem atendimento, %s de assertividade baseado em "
                             + "%s registros na base de conhecimento.",
                             "100%", decimalFormat.format(vlPositivo));
                 } else if (title.startsWith("19Atendimentos")) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.0");
 
-                    titleChanged = String.format("Estimativa de atendimento: 19 atendimentos, %s de acertividade baseado em "
+                    titleChanged = String.format("Estimativa de atendimento: 19 atendimentos, %s de assertividade baseado em "
                             + "%s registros na base de conhecimento.",
                             "100%", decimalFormat.format(vlPositivo));
                 } else {
@@ -273,7 +273,7 @@ public class MinerJ48 {
                     String vlSuperior = title.substring(title.indexOf("-")+1, title.indexOf("Atend"));
 
                     titleChanged = "Estimativa de atendimento: de " + vlInferior + " à " + vlSuperior
-                            + ", 100% de acertividade baseado em "
+                            + ", 100% de assertividade baseado em "
                             + vlPositivo + " registros na base de conhecimento.";
                 }
             }
