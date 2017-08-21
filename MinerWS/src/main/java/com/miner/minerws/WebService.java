@@ -7,7 +7,9 @@ package com.miner.minerws;
 
 import com.miner.minerws.miners.minerj48.MinerJ48;
 import com.miner.minerws.model.Node;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -20,12 +22,12 @@ import javax.ws.rs.core.Response;
  */
 @Path("service")
 public class WebService {
-
-    @GET
-    @Path("/minerJ48/{file}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response minerJ48(@PathParam("file") String file) {
-        Node node = new MinerJ48().minerJ48(file);
+    
+    @POST
+    @Path("/minerJ48File")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response minerJ48File(String file) {
+        Node node = new MinerJ48().minerJ48();
         return Response.status(200)
                 .header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
@@ -36,10 +38,10 @@ public class WebService {
     }
 
     @GET
-    @Path("/minerJ48/")
+    @Path("/minerJ48")
     @Produces(MediaType.APPLICATION_JSON)
     public Response minerJ48() {
-        Node node = new MinerJ48().minerJ48(null);
+        Node node = new MinerJ48().minerJ48();
         return Response.status(200)
                 .header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")

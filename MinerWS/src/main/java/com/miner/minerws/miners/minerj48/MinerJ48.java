@@ -6,6 +6,7 @@
 package com.miner.minerws.miners.minerj48;
 
 import com.miner.minerws.model.Node;
+import java.io.File;
 import java.io.FileInputStream;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -22,14 +23,19 @@ import weka.core.converters.ConverterUtils;
  */
 public class MinerJ48 {
 
-    public Node minerJ48(String file) {
-        String retornoWeka;
-
+    public Node minerJ48() {
         ClassLoader classLoader = getClass().getClassLoader();
-        retornoWeka = executeWekaJ48(classLoader.getResource("data/dados_completos.arff").getFile());
+        return changeValuesWeka(executeWekaJ48(classLoader.getResource("data/dados_completos.arff").getFile()));
+    }
+    
+    public Node minerJ48File(Byte[] data) {
         
-        System.out.println(retornoWeka);
-        String[] list = retornoWeka.split("\n");
+        return null;
+    }
+
+    private Node changeValuesWeka(String wekaReturn) {
+        System.out.println(wekaReturn);
+        String[] list = wekaReturn.split("\n");
 
         HashMap<String, Node> nodes = new HashMap<String, Node>();
         Node root = null;
@@ -230,9 +236,9 @@ public class MinerJ48 {
                 String[] valores = title.substring(title.indexOf("(") + 1, title.indexOf(")")).split("/");
                 double vlPositivo = Double.valueOf(valores[0]);
                 double vlNegativo = Double.valueOf(valores[1]);
-                
+
                 double total = vlPositivo + vlNegativo;
-                Double assertividade = (vlPositivo*100)/total;
+                Double assertividade = (vlPositivo * 100) / total;
                 DecimalFormat decimalFormat = new DecimalFormat("#.00");
                 String assertividadeString = decimalFormat.format(assertividade) + "%";
 
@@ -245,7 +251,7 @@ public class MinerJ48 {
                             assertividadeString, decimalFormat.format(total));
                 } else {
                     String vlInferior = title.substring(0, title.indexOf("-"));
-                    String vlSuperior = title.substring(title.indexOf("-")+1, title.indexOf("Atend"));
+                    String vlSuperior = title.substring(title.indexOf("-") + 1, title.indexOf("Atend"));
 
                     titleChanged = String.format("Estimativa de atendimento: de %s à %s, %s de assertividade baseado em "
                             + "%s registros na base de conhecimento.",
@@ -270,7 +276,7 @@ public class MinerJ48 {
                 } else {
 
                     String vlInferior = title.substring(0, title.indexOf("-"));
-                    String vlSuperior = title.substring(title.indexOf("-")+1, title.indexOf("Atend"));
+                    String vlSuperior = title.substring(title.indexOf("-") + 1, title.indexOf("Atend"));
 
                     titleChanged = "Estimativa de atendimento: de " + vlInferior + " à " + vlSuperior
                             + ", 100% de assertividade baseado em "
